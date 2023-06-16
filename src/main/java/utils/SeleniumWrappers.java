@@ -4,6 +4,7 @@ import java.time.Duration;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -18,13 +19,17 @@ public class SeleniumWrappers extends BaseTests{
 	 * @param locator (By locator)
 	 */
 	public void click(By locator) {	
+		WebElement element;
 		try {
 			waitForElementToBeClickable(locator);
-			WebElement element = driver.findElement(locator);
+			element = driver.findElement(locator);
 			element.click();
 			System.out.println("Called method click");
 		}catch(NoSuchElementException e) {
 			e.printStackTrace();
+		}catch(StaleElementReferenceException e) {
+			element = driver.findElement(locator);
+			element.click();
 		}
 	}
 	
