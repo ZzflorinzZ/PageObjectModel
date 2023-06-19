@@ -67,7 +67,7 @@ public class SeleniumWrappers extends BaseTests {
 		try {
 			waitForElementToBeVisible(locator);
 			WebElement element = driver.findElement(locator);
-			element.clear();									//lipsea clear-ul din metoda
+			element.clear(); // lipsea clear-ul din metoda
 			element.sendKeys(textToSend);
 		} catch (NoSuchElementException e) {
 			e.printStackTrace();
@@ -84,7 +84,7 @@ public class SeleniumWrappers extends BaseTests {
 	}
 
 	public void hooverOnElementAndClick(By locator, By locator2) {
-		Actions hoover = new Actions(driver); 		// ar trebui mai degraba definit obiectul clasei Actions in @BeforeClass (la modul generic << Actions action = new Actions(driver); >>) ?
+		Actions hoover = new Actions(driver); // ar trebui mai degraba definit obiectul clasei Actions in @BeforeClass (la modul generic << Actions action = new Actions(driver); >>) ?
 		try {
 			waitForElementToBeVisible(locator);
 			WebElement element = driver.findElement(locator);
@@ -98,26 +98,34 @@ public class SeleniumWrappers extends BaseTests {
 	public void selectByIndex(By locator, int index) {
 		try {
 			WebElement element = driver.findElement(locator);
-			Select select = new Select(element);	// ar trebui mai degraba definit obiectul clasei Select in @BeforeClass?
-			select.selectByIndex(index);			
+			Select select = new Select(element); // ar trebui mai degraba definit obiectul clasei Select in @BeforeClass?
+			select.selectByIndex(index);
 		} catch (NoSuchElementException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void selectByValue(By locator, String value) {
 		try {
 			WebElement element = driver.findElement(locator);
-			Select select = new Select(element);	// ar trebui mai degraba definit obiectul clasei Select in @BeforeClass?
-			select.selectByValue(value);			
+			Select select = new Select(element); // ar trebui mai degraba definit obiectul clasei Select in @BeforeClass?
+			select.selectByValue(value);
 		} catch (NoSuchElementException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public String getSelectedOption(By locator) {
-		WebElement element = driver.findElement(locator);
-		Select select = new Select(element);
-		return select.getFirstSelectedOption().getText();	
+		WebElement element;
+		Select select = null;
+		try {
+			element = driver.findElement(locator);
+			select = new Select(element);
+		} catch (NoSuchElementException e) {
+			e.printStackTrace();
+		} catch (NullPointerException e) {		//de ce nu imi arunca exceptia daca comentez linia 123?
+			e.printStackTrace();
+		}
+		return select.getFirstSelectedOption().getText();
 	}
 }
