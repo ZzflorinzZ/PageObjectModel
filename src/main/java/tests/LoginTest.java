@@ -13,7 +13,7 @@ public class LoginTest extends BaseTests{
 	@Test(priority = 1)
 	public void validLoginTest() {
 		app.click(app.menu.loginLink);
-		app.loginPage.loginInApp("TestUser2", "12345@67890");
+		app.loginPage.loginInApp("TestUser", "12345@67890");
 		assertTrue(app.checkElementIsDisplayed(app.loginPage.successMessage));
 		app.click(app.loginPage.logoutButton);
 	}

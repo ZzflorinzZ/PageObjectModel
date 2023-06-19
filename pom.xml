@@ -27,6 +27,11 @@
 </dependency>
 
 
-  </dependencies>
+  <dependency>
+  	<groupId>com.florin</groupId>
+  	<artifactId>SeleniumTraining</artifactId>
+  	<version>0.0.1-SNAPSHOT</version>
+  </dependency>
+</dependencies>
   
   </project>

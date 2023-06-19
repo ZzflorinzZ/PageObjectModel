@@ -25,6 +25,9 @@ public class MenuPage extends SeleniumWrappers{
 	public By shopLink = By.xpath("//li[@id='menu-item-262']/a[text()='Books']");
 	public By eventsLink = By.xpath("//li[@id='menu-item-1047']/a[text()='Events']");
 	
+	public By userLoggedIn = By.cssSelector("span[class='user_name']");
+	public By userSettings = By.xpath("//a[text()='Settings']");
+	
 	
 	public void navigateBack(By locator) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
