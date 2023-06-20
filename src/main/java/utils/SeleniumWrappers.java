@@ -68,7 +68,7 @@ public class SeleniumWrappers extends BaseTests {
 		try {
 			waitForElementToBeVisible(locator);
 			WebElement element = driver.findElement(locator);
-			element.clear(); // lipsea clear-ul din metoda
+			element.clear();
 			element.sendKeys(textToSend);
 		} catch (NoSuchElementException e) {
 			e.printStackTrace();
@@ -120,6 +120,41 @@ public class SeleniumWrappers extends BaseTests {
 			WebElement element = driver.findElement(locator);
 			Select select = new Select(element);
 			return select.getFirstSelectedOption().getText();
+		} catch (NoSuchElementException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public void dragAndDropElementToElement(By locator1, By locator2) {
+		try {
+			WebElement e1 = driver.findElement(locator1);
+			WebElement e2 = driver.findElement(locator2);
+			Actions action = new Actions(driver);
+			action.dragAndDrop(e1, e2).perform();
+		} catch (NoSuchElementException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void dragAndDrop(By locator, int x, int y) {
+		try {
+			WebElement element = driver.findElement(locator);
+
+			Actions action = new Actions(driver);
+			/*
+			 * action .moveToElement(element) .clickAndHold() .moveByOffset(x, y) .release()
+			 * .perform();
+			 */
+			action.dragAndDropBy(element, x, y).perform();
+		} catch (NoSuchElementException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public WebElement returnElement(By locator) {
+		try {
+			return driver.findElement(locator);
 		} catch (NoSuchElementException e) {
 			e.printStackTrace();
 		}
