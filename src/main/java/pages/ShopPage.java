@@ -16,6 +16,10 @@ public class ShopPage extends SeleniumWrappers{
 	}
 	
 	public By dropdown = By.cssSelector("select[class='orderby']");
+	public By rightPriceSlider = By.cssSelector("span[style='left: 100%;']");
+	public By leftPriceSlider = By.cssSelector("span[style='left: 0%;']");
+	
+	public By targetPrice = By.xpath("//span[text()='$12']");
 	
 	public void selectByValue(String value) {
 		WebElement element = driver.findElement(dropdown);

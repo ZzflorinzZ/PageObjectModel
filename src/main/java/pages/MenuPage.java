@@ -24,6 +24,8 @@ public class MenuPage extends SeleniumWrappers{
 	public By loginLink = By.linkText("Login");
 	public By shopLink = By.xpath("//li[@id='menu-item-262']/a[text()='Books']");
 	public By eventsLink = By.xpath("//li[@id='menu-item-1047']/a[text()='Events']");
+	public By postFormatsLink = By.linkText("Post Formats");
+	public By blogLink = By.linkText("BLOG");
 	
 	
 	public void navigateBack(By locator) {

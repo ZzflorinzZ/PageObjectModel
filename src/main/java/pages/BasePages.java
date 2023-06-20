@@ -10,6 +10,8 @@ public class BasePages extends SeleniumWrappers{
 	public ShopPage shop = new ShopPage(driver);
 	public AcountSettingsPage accountDetails = new AcountSettingsPage(driver);
 	public ShippingAddressPage	shippingaddress = new ShippingAddressPage(driver);
+	public PostFormatsPage postFormPage = new PostFormatsPage(driver); 
+	public ContactsPage contacts = new ContactsPage(driver);
 
 	
 	
