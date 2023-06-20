@@ -21,6 +21,9 @@ public class LoginPage extends SeleniumWrappers{	//clasele de page object nu au 
 	public By successMessage = By.cssSelector("div[class*='sc_infobox_style_success']");
 	public By logoutButton = By.linkText("Logout");
 	
+	public By userLoggedIn = By.cssSelector("span[class='user_name']");
+	public By userSettings = By.xpath("//a[text()='Settings']");
+	
 	//metode
 	public void loginInApp(String user, String pass) {
 		sendKeys(usernameField, user);

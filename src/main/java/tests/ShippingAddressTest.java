@@ -18,7 +18,8 @@ public class ShippingAddressTest extends BaseTests{
 	
 	@Test(priority = 2)
 	public void goToAccountSettingsAndAccessShippingAddress() {
-		app.hooverOnElementAndClick(app.menu.userLoggedIn, app.menu.userSettings);
+		app.hooverOnElement(app.loginPage.userLoggedIn);
+		app.click(app.loginPage.userSettings);
 		app.click(app.accountDetails.addresses);
 		app.click(app.accountDetails.addShippingAdressButton);
 	}

@@ -1,5 +1,6 @@
 package utils;
 
+import java.io.IOException;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
@@ -83,8 +84,8 @@ public class SeleniumWrappers extends BaseTests {
 		}
 	}
 
-	public void hooverOnElementAndClick(By locator, By locator2) {
-		Actions hoover = new Actions(driver); // ar trebui mai degraba definit obiectul clasei Actions in @BeforeClass (la modul generic << Actions action = new Actions(driver); >>) ?
+	public void hooverOnElement(By locator) {
+		Actions hoover = new Actions(driver);
 		try {
 			waitForElementToBeVisible(locator);
 			WebElement element = driver.findElement(locator);
@@ -92,13 +93,12 @@ public class SeleniumWrappers extends BaseTests {
 		} catch (NoSuchElementException e) {
 			e.printStackTrace();
 		}
-		click(locator2); // ar fi mai bine sa nu includ click-ul pe elementul 2 in metoda de hoover?
 	}
 
 	public void selectByIndex(By locator, int index) {
 		try {
 			WebElement element = driver.findElement(locator);
-			Select select = new Select(element); // ar trebui mai degraba definit obiectul clasei Select in @BeforeClass?
+			Select select = new Select(element);
 			select.selectByIndex(index);
 		} catch (NoSuchElementException e) {
 			e.printStackTrace();
@@ -108,7 +108,7 @@ public class SeleniumWrappers extends BaseTests {
 	public void selectByValue(By locator, String value) {
 		try {
 			WebElement element = driver.findElement(locator);
-			Select select = new Select(element); // ar trebui mai degraba definit obiectul clasei Select in @BeforeClass?
+			Select select = new Select(element);
 			select.selectByValue(value);
 		} catch (NoSuchElementException e) {
 			e.printStackTrace();
@@ -116,16 +116,13 @@ public class SeleniumWrappers extends BaseTests {
 	}
 
 	public String getSelectedOption(By locator) {
-		WebElement element;
-		Select select = null;
 		try {
-			element = driver.findElement(locator);
-			select = new Select(element);
+			WebElement element = driver.findElement(locator);
+			Select select = new Select(element);
+			return select.getFirstSelectedOption().getText();
 		} catch (NoSuchElementException e) {
 			e.printStackTrace();
-		} catch (NullPointerException e) {		//de ce nu imi arunca exceptia daca comentez linia 123?
-			e.printStackTrace();
 		}
-		return select.getFirstSelectedOption().getText();
+		return null;
 	}
 }
