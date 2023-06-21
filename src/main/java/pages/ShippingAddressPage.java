@@ -3,7 +3,9 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class ShippingAddressPage {
+import utils.SeleniumWrappers;
+
+public class ShippingAddressPage extends SeleniumWrappers{
 	
 	public WebDriver driver;
 	

@@ -36,6 +36,18 @@ public class SeleniumWrappers extends BaseTests {
 			element.click();
 		}
 	}
+	
+	public void doubleClick(By locator) {
+		try {
+			waitForElementToBeClickable(locator);
+			Actions action = new Actions(driver);
+			action.doubleClick(returnElement(locator));			
+			System.out.println("Called method doubleClick");
+		} catch (StaleElementReferenceException e) {
+			Actions action = new Actions(driver);
+			action.doubleClick(returnElement(locator));	
+		}
+	}
 
 	public void waitForElementToBeClickable(By locator) {
 		try {
@@ -84,7 +96,7 @@ public class SeleniumWrappers extends BaseTests {
 		}
 	}
 
-	public void hooverOnElement(By locator) {
+/*	public void hooverOnElement(By locator) {
 		Actions hoover = new Actions(driver);
 		try {
 			waitForElementToBeVisible(locator);
@@ -94,6 +106,13 @@ public class SeleniumWrappers extends BaseTests {
 			e.printStackTrace();
 		}
 	}
+*/
+	public void hooverOnElement(By locator) {
+		Actions hoover = new Actions(driver);
+			waitForElementToBeVisible(locator);
+			hoover.moveToElement(returnElement(locator)).perform();
+	}
+	
 
 	public void selectByIndex(By locator, int index) {
 		try {

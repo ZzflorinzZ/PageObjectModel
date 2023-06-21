@@ -12,6 +12,7 @@ public class BasePages extends SeleniumWrappers{
 	public ShippingAddressPage	shippingaddress = new ShippingAddressPage(driver);
 	public PostFormatsPage postFormPage = new PostFormatsPage(driver); 
 	public ContactsPage contacts = new ContactsPage(driver);
+	public AudioPostPage audioPostPage = new AudioPostPage(driver);
 
 	
 	

@@ -3,7 +3,9 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class AcountSettingsPage {
+import utils.SeleniumWrappers;
+
+public class AcountSettingsPage extends SeleniumWrappers{
 	
 	public WebDriver driver;
 	
