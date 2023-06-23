@@ -24,6 +24,8 @@ public class LoginPage extends SeleniumWrappers{	//clasele de page object nu au 
 	public By userLoggedIn = By.cssSelector("span[class='user_name']");
 	public By userSettings = By.xpath("//a[text()='Settings']");
 	
+	public By closeLoginPopup = By.cssSelector("a[class='popup_close']");
+	
 	//metode
 	public void loginInApp(String user, String pass) {
 		sendKeys(usernameField, user);

@@ -27,6 +27,15 @@ public class MenuPage extends SeleniumWrappers{
 	public By postFormatsLink = By.linkText("Post Formats");
 	public By blogLink = By.linkText("BLOG");
 	
+	public By searchIcon = By.cssSelector("button[class*='search_submit']");
+	public By searchInput = By.cssSelector("input[class='search_field']");
+	
+	
+	public void search(String text) {
+		click(searchIcon);
+		sendKeys(searchInput, text);
+		click(searchIcon);
+	}
 	
 	public void navigateBack(By locator) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
