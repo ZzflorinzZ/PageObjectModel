@@ -41,11 +41,11 @@ public class SeleniumWrappers extends BaseTests {
 		try {
 			waitForElementToBeClickable(locator);
 			Actions action = new Actions(driver);
-			action.doubleClick(returnElement(locator));			
+			action.doubleClick(returnElement(locator)).perform();			
 			System.out.println("Called method doubleClick");
 		} catch (StaleElementReferenceException e) {
 			Actions action = new Actions(driver);
-			action.doubleClick(returnElement(locator));	
+			action.doubleClick(returnElement(locator)).perform();	
 		}
 	}
 

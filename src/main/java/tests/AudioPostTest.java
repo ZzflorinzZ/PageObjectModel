@@ -15,7 +15,7 @@ public class AudioPostTest extends BaseTests{
 		app.click(app.postFormPage.audioPost);
 		app.click(app.audioPostPage.playButton);
 //		app.click(app.audioPostPage.playButton);
-//		app.doubleClick(app.audioPostPage.dream);		// nu sunt sigur de ce nu face dublu click
+		app.doubleClick(app.audioPostPage.dream);		// nu sunt sigur de ce nu face dublu click
 		app.dragAndDrop(app.audioPostPage.songSlider, 200, 0);
 		app.dragAndDrop(app.audioPostPage.volumeSlider, -50, 0);
 	}
