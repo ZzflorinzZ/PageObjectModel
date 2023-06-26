@@ -66,6 +66,15 @@ public class SeleniumWrappers extends BaseTests {
 			e.printStackTrace();
 		}
 	}
+	
+	public void waitForElementToBePresent(By locator) {
+		try {
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+			wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+		} catch (NoSuchElementException e) {
+			e.printStackTrace();
+		}
+	}
 
 	/**
 	 * Custom sendKeys method. Wraps default Selenium sendKeys and enhance
@@ -110,6 +119,12 @@ public class SeleniumWrappers extends BaseTests {
 	public void hooverOnElement(By locator) {
 		Actions hoover = new Actions(driver);
 			waitForElementToBeVisible(locator);
+			hoover.moveToElement(returnElement(locator)).perform();
+	}
+	
+	public void hooverOnElementPresent(By locator) {
+		Actions hoover = new Actions(driver);
+			waitForElementToBePresent(locator);
 			hoover.moveToElement(returnElement(locator)).perform();
 	}
 	

@@ -30,6 +30,8 @@ public class MenuPage extends SeleniumWrappers{
 	public By searchIcon = By.cssSelector("button[class*='search_submit']");
 	public By searchInput = By.cssSelector("input[class='search_field']");
 	
+	public By portfolioLink = By.linkText("Portfolio");
+	public By portfolio2ColumnsLink = By.linkText("Portfolio 2 columns");
 	
 	public void search(String text) {
 		click(searchIcon);
