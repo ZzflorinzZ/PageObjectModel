@@ -2,7 +2,11 @@ package tests;
 
 import static org.testng.Assert.assertTrue;
 
+import java.time.Duration;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
 import utils.BaseTests;
@@ -19,9 +23,8 @@ public class BlogPostsTest extends BaseTests{
 
 	@Test(priority = 2, dataProviderClass = DataProviderClass.class, dataProvider = "blogPostsDataProvider")
 	public void checkBlogPostsTitle(By blogPostImage, String blogPostTitle) throws InterruptedException {		
-		app.hooverOnElementPresent(blogPostImage);																//am creat o metoda noua de hoover cu wait pt prezenta elementului; daca o foloseam pe cea cu vizibilitatea elementului, spunea ca nu le vede
-		Thread.sleep(125);																						//daca nu pun thered.sleep-ul, pica primul assert
+		app.hooverOnElementPresent(blogPostImage);
+		app.textToBePresentInElementLocated(By.xpath("//a[text()='"+blogPostTitle+"']"), blogPostTitle);
 		assertTrue(app.returnElement(By.xpath("//a[text()='"+blogPostTitle+"']")).isDisplayed());
-		
 	}
 }

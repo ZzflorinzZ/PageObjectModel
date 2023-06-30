@@ -75,6 +75,15 @@ public class SeleniumWrappers extends BaseTests {
 			e.printStackTrace();
 		}
 	}
+	
+	public void textToBePresentInElementLocated(By locator, String textToBePresent) {
+		try {
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+			wait.until(ExpectedConditions.textToBePresentInElementLocated(locator, textToBePresent));
+		} catch (NoSuchElementException e) {
+			e.printStackTrace();
+		}
+	}
 
 	/**
 	 * Custom sendKeys method. Wraps default Selenium sendKeys and enhance
