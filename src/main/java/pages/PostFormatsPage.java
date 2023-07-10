@@ -16,4 +16,6 @@ public class PostFormatsPage extends SeleniumWrappers {
 	public By searchField = By.cssSelector("input[title='Search for:']");
 	public By audioPost = By.xpath("//a[text()='Audio post']");
 	
+	public By galleryFormatImg = By.cssSelector("div[id='sc_slider_1964948954']");
+	
 }
