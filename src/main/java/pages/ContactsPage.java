@@ -14,5 +14,13 @@ public class ContactsPage extends SeleniumWrappers {
 	}
 	
 	public By nameField = By.cssSelector("input[name='your-name']");
+	public By zoomIn = By.cssSelector("button[title='Zoom in']");
+	public By zoomOut = By.cssSelector("button[title='Zoom out']");
+	public By iframe = By.tagName("iframe");
+	
+	public void zoomMap(By locator) {
+		driver.switchTo().frame(returnElement(iframe));
+		click(locator);
+	}
 
 }

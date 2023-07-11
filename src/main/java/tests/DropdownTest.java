@@ -8,21 +8,21 @@ import utils.BaseTests;
 
 public class DropdownTest extends BaseTests{
 	
-	@Test
+	@Test(groups = "ProductFunctionality")
 	public void selectByValueTest() {
 		app.click(app.menu.shopLink);
 		app.shop.selectByValue("popularity");
 		assertEquals(app.shop.getSelectedOption(), "Sort by popularity");
 	}
 	
-	@Test
+	@Test(groups = "ProductFunctionality")
 	public void selectByIndexTest() {
 		app.click(app.menu.shopLink);
 		app.shop.selectByIndex(3);
 		assertEquals(app.shop.getSelectedOption(), "Sort by latest");
 	}
 	
-	@Test
+	@Test(groups = "ProductFunctionality")
 	public void selectByVisibleTextTest() {
 		app.click(app.menu.shopLink);
 		app.shop.selectByVisibleText("Sort by price: high to low");
