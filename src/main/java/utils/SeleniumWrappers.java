@@ -140,8 +140,7 @@ public class SeleniumWrappers extends BaseTests {
 
 	public void selectByIndex(By locator, int index) {
 		try {
-			WebElement element = driver.findElement(locator);
-			Select select = new Select(element);
+			Select select = new Select(returnElement(locator));
 			select.selectByIndex(index);
 		} catch (NoSuchElementException e) {
 			e.printStackTrace();
@@ -150,8 +149,7 @@ public class SeleniumWrappers extends BaseTests {
 
 	public void selectByValue(By locator, String value) {
 		try {
-			WebElement element = driver.findElement(locator);
-			Select select = new Select(element);
+			Select select = new Select(returnElement(locator));
 			select.selectByValue(value);
 		} catch (NoSuchElementException e) {
 			e.printStackTrace();
@@ -160,8 +158,7 @@ public class SeleniumWrappers extends BaseTests {
 
 	public String getSelectedOption(By locator) {
 		try {
-			WebElement element = driver.findElement(locator);
-			Select select = new Select(element);
+			Select select = new Select(returnElement(locator));
 			return select.getFirstSelectedOption().getText();
 		} catch (NoSuchElementException e) {
 			e.printStackTrace();

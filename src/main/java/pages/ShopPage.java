@@ -21,6 +21,13 @@ public class ShopPage extends SeleniumWrappers{
 	
 	public By targetPrice = By.xpath("//span[text()='$12']");
 	
+	public By firstBookPrice = By.xpath("//span[@class='price'][1]/descendant::bdi");
+	public By firstBookDisountedPrice = By.xpath("//span[@class='price'][1]/ins/descendant::bdi");
+	public By nextPageButton = By.cssSelector("a[class='next page-numbers']");
+	public By lastBookPrice = By.xpath("//span[@class='price']/descendant::bdi");
+	public By lastBookDisountedPrice = By.xpath("//span[@class='price'][1]/ins/descendant::bdi");
+	
+	
 	public void selectByValue(String value) {
 		WebElement element = driver.findElement(dropdown);
 		Select select = new Select(element);
