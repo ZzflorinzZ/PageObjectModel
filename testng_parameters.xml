@@ -6,7 +6,7 @@
 	  <parameter name = "invuser" value = "BadUser"/>
 	  <parameter name = "invpass" value = "BadPass"/>
     <classes>
-      <class name="tests.LoginTest" />
+      <class name="tests.CookiesLogin" />
    </classes>
  </test>
 </suite>

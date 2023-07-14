@@ -14,6 +14,7 @@ import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
@@ -26,7 +27,7 @@ public class BaseTests {
 	public static WebDriver driver;
 	public BasePages app;
 
-	@BeforeClass(alwaysRun = true)
+	@BeforeMethod(alwaysRun = true)
 	public void setup() {
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
@@ -36,7 +37,7 @@ public class BaseTests {
 		app = new BasePages();
 	}
 
-	@AfterClass(alwaysRun = true)
+	@AfterMethod(alwaysRun = true)
 	public void closeBrowser() throws InterruptedException {
 		Thread.sleep(4000);
 //		driver.close();	// inchide tab-ul curent
@@ -53,6 +54,7 @@ public class BaseTests {
 			//salvam poza
 			Files.copy(picture, new File("poze/failure.png"));
 		}
+
 	}
 
 }
