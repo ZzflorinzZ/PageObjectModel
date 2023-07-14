@@ -14,7 +14,7 @@ public class CompareBooksPricesTest extends BaseTests{
 		app.selectByValue(app.shop.dropdown, "price");
 		
 		String firstBookPrice;
-		String lastBookPrice;
+		StringBuilder LastBookPrice;
 
 		
 		if(app.checkElementIsDisplayed(app.shop.firstBookDisountedPrice)) {
@@ -32,15 +32,16 @@ public class CompareBooksPricesTest extends BaseTests{
 		}
 		
 		if(app.checkElementIsDisplayed(app.shop.lastBookDisountedPrice)) {
-			lastBookPrice = app.returnElement(app.shop.lastBookDisountedPrice).getText().toString();
+			LastBookPrice = new StringBuilder(app.returnElement(app.shop.lastBookPrice).getText().toString());
 			System.out.println(firstBookPrice);
 		}else {
-			lastBookPrice = app.returnElement(app.shop.lastBookPrice).getText().toString();
-			System.out.println(lastBookPrice);
+			LastBookPrice = new StringBuilder(app.returnElement(app.shop.lastBookPrice).getText().toString());
+			LastBookPrice.delete(0, 1);
+			System.out.println(LastBookPrice);
 		}
 		
 		double firstBookPriceD = Double.parseDouble(firstBookPrice.substring(1, 5));
-		double lastBookPriceD = Double.parseDouble(lastBookPrice.substring(1, 6));
+		double lastBookPriceD = Double.parseDouble(LastBookPrice.toString());
 		System.out.println(firstBookPriceD + ", " + lastBookPriceD);
 		
 		if(firstBookPriceD < lastBookPriceD) {

@@ -25,7 +25,7 @@ public class ShopPage extends SeleniumWrappers{
 	public By firstBookDisountedPrice = By.xpath("//span[@class='price'][1]/ins/descendant::bdi");
 	public By nextPageButton = By.cssSelector("a[class='next page-numbers']");
 	public By lastBookPrice = By.xpath("//span[@class='price']/descendant::bdi");
-	public By lastBookDisountedPrice = By.xpath("//span[@class='price'][1]/ins/descendant::bdi");
+	public By lastBookDisountedPrice = By.xpath("//span[@class='price']/ins/descendant::bdi");
 	
 	
 	public void selectByValue(String value) {
