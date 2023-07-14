@@ -27,7 +27,7 @@ public class BaseTests {
 	public static WebDriver driver;
 	public BasePages app;
 
-	@BeforeMethod(alwaysRun = true)
+	@BeforeClass(alwaysRun = true)
 	public void setup() {
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
@@ -37,7 +37,7 @@ public class BaseTests {
 		app = new BasePages();
 	}
 
-	@AfterMethod(alwaysRun = true)
+	@AfterClass(alwaysRun = true)
 	public void closeBrowser() throws InterruptedException {
 		Thread.sleep(4000);
 //		driver.close();	// inchide tab-ul curent
