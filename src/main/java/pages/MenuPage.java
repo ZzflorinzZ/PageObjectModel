@@ -33,6 +33,10 @@ public class MenuPage extends SeleniumWrappers{
 	public By portfolioLink = By.linkText("Portfolio");
 	public By portfolio2ColumnsLink = By.linkText("Portfolio 2 columns");
 	
+	public By facebookLink = By.cssSelector("span[class='icon-facebook']");
+	public By twitterLink = By.cssSelector("span[class='icon-twitter']");
+	public By instagramLink = By.cssSelector("span[class='icon-instagramm']");
+	
 	public void search(String text) {
 		click(searchIcon);
 		sendKeys(searchInput, text);

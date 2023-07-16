@@ -1,7 +1,11 @@
 package utils;
 
+import static org.testng.Assert.assertEquals;
+
 import java.io.IOException;
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -200,4 +204,15 @@ public class SeleniumWrappers extends BaseTests {
 		}
 		return null;
 	}
+	
+	public void checkRedirectedUrlAndReturnToInitialPage(By locator, String url) {
+		click(locator);
+		List<String> browserTabs = new ArrayList<>(driver.getWindowHandles());
+		driver.switchTo().window(browserTabs.get(1));
+		assertEquals(driver.getCurrentUrl(), url);
+		driver.close();
+		driver.switchTo().window(browserTabs.get(0));
+	}	
+	
+	
 }
