@@ -40,16 +40,16 @@ public class SeleniumWrappers extends BaseTests {
 			element.click();
 		}
 	}
-	
+
 	public void doubleClick(By locator) {
 		try {
 			waitForElementToBeClickable(locator);
 			Actions action = new Actions(driver);
-			action.doubleClick(returnElement(locator)).perform();			
+			action.doubleClick(returnElement(locator)).perform();
 			System.out.println("Called method doubleClick");
 		} catch (StaleElementReferenceException e) {
 			Actions action = new Actions(driver);
-			action.doubleClick(returnElement(locator)).perform();	
+			action.doubleClick(returnElement(locator)).perform();
 		}
 	}
 
@@ -70,7 +70,7 @@ public class SeleniumWrappers extends BaseTests {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void waitForElementToBePresent(By locator) {
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -79,7 +79,7 @@ public class SeleniumWrappers extends BaseTests {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void textToBePresentInElementLocated(By locator, String textToBePresent) {
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -118,29 +118,23 @@ public class SeleniumWrappers extends BaseTests {
 		}
 	}
 
-/*	public void hooverOnElement(By locator) {
-		Actions hoover = new Actions(driver);
-		try {
-			waitForElementToBeVisible(locator);
-			WebElement element = driver.findElement(locator);
-			hoover.moveToElement(element).perform();
-		} catch (NoSuchElementException e) {
-			e.printStackTrace();
-		}
-	}
-*/
+	/*
+	 * public void hooverOnElement(By locator) { Actions hoover = new
+	 * Actions(driver); try { waitForElementToBeVisible(locator); WebElement element
+	 * = driver.findElement(locator); hoover.moveToElement(element).perform(); }
+	 * catch (NoSuchElementException e) { e.printStackTrace(); } }
+	 */
 	public void hooverOnElement(By locator) {
 		Actions hoover = new Actions(driver);
-			waitForElementToBeVisible(locator);
-			hoover.moveToElement(returnElement(locator)).perform();
+		waitForElementToBeVisible(locator);
+		hoover.moveToElement(returnElement(locator)).perform();
 	}
-	
+
 	public void hooverOnElementPresent(By locator) {
 		Actions hoover = new Actions(driver);
-			waitForElementToBePresent(locator);
-			hoover.moveToElement(returnElement(locator)).perform();
+		waitForElementToBePresent(locator);
+		hoover.moveToElement(returnElement(locator)).perform();
 	}
-	
 
 	public void selectByIndex(By locator, int index) {
 		try {
@@ -204,15 +198,19 @@ public class SeleniumWrappers extends BaseTests {
 		}
 		return null;
 	}
-	
-	public void checkRedirectedUrlAndReturnToInitialPage(By locator, String url) {
-		click(locator);
-		List<String> browserTabs = new ArrayList<>(driver.getWindowHandles());
-		driver.switchTo().window(browserTabs.get(1));
-		assertEquals(driver.getCurrentUrl(), url);
-		driver.close();
-		driver.switchTo().window(browserTabs.get(0));
-	}	
-	
-	
+
+	public String checkRedirectedUrlAndReturnToInitialPage(By locator) {
+		try {
+			click(locator);
+			List<String> browserTabs = new ArrayList<>(driver.getWindowHandles());
+			driver.switchTo().window(browserTabs.get(1));
+			String currentURL = driver.getCurrentUrl();		
+			driver.close();
+			driver.switchTo().window(browserTabs.get(0));
+			return currentURL;
+		} catch (Exception e) {
+			return e.getMessage(); 
+		}
+	}
+
 }
